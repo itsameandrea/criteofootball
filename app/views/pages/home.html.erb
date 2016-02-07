@@ -39,8 +39,8 @@
 <div class="col-md-6">
   <div class="well">
     <h2 class="text-center">Next game:</h2>
-    <p>Address: xxxxxxxxxxxxxxxxxxx</p>
-    <p>Time: aa:bb</p>
+    <p>Address: <%= @game.address %></p>
+    <p>Time: <%= @game.time %></p>
     <p>Players: 10</p>
     <br/>
     <%= link_to "Join the game", "#", class: 'btn btn-primary btn-lg btn-block' %>
