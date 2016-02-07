@@ -1,0 +1,91 @@
+// Place all the styles related to the Pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@font-face {
+        font-family: "Montserrat-Light";
+        src: url(/assets/Montserrat-Light.otf) format("truetype");
+    
+}
+
+.navbar-brand > img{
+    
+    width: 150px;
+    max-width: 70%;
+    height: auto;
+}
+
+.navbar.navbar-inverse.navbar-static-top{
+    
+    background-color: white;
+    //border-color: transparent;
+    margin-bottom: 0;
+}
+
+.container-full {
+  margin: 0 auto;
+  width: 100%;
+  
+}
+
+.navbar-brand ,.navbar-nav>li>a {
+  	padding-left: 30px;
+    padding-right: 30px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+} 
+.navbar-nav>.active>a {
+	opacity:.6;
+}
+
+
+.jumbotron {
+    //color: white;
+    //background: #FFB75E; /* fallback for old browsers */
+    //background: -webkit-linear-gradient(to left, #FFB75E , #ED8F03); /* Chrome 10-25, Safari 5.1-6 */
+    //background: linear-gradient(to left, #FFB75E , #ED8F03); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    background-image: url(https://pixabay.com/static/uploads/photo/2014/10/14/20/24/the-ball-488716_960_720.jpg);
+    background-repeat: none;
+    background-attachment: initial;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    text-align: center;
+    color: #fff;
+//    position: relative;
+    bottom: 51px;
+    height: 400px;
+
+}
+
+
+.white {
+    color: white !important;
+} 
+
+
+.montserrat {
+    
+    font-family: "Montserrat-Light","Helvetica Neue",Helvetica,Arial,sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.btn-custom {
+  background-color: hsl(35, 100%, 47%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff9605", endColorstr="#ef8b00");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#ff9605), to(#ef8b00));
+  background-image: -moz-linear-gradient(top, #ff9605, #ef8b00);
+  background-image: -ms-linear-gradient(top, #ff9605, #ef8b00);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ff9605), color-stop(100%, #ef8b00));
+  background-image: -webkit-linear-gradient(top, #ff9605, #ef8b00);
+  background-image: -o-linear-gradient(top, #ff9605, #ef8b00);
+  background-image: linear-gradient(#ff9605, #ef8b00);
+  border-color: #ef8b00 #ef8b00 hsl(35, 100%, 46%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.06);
+  -webkit-font-smoothing: antialiased;
+}
