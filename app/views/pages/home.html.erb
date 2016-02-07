@@ -4,12 +4,35 @@
     <p><a class="btn btn-large btn-success" href="http://bootply.com/tagged/bootstrap-3" target="ext">More Examples</a></p>
 </div>
 <row>
+<% if user_signed_in? %>
+<div class="col-md-6">
+  <div class="well">
+    <h2 class="text-center">Next game:</h2>
+    <p>Address: xxxxxxxxxxxxxxxxxxx</p>
+    <p>Time: aa:bb</p>
+    <p>Players: 10</p>
+    <br/>
+    <%= link_to "Join the game", "#", class: 'btn btn-primary btn-lg btn-block' %>
+  </div>
+</div>
+<div class="col-md-6">
+  <div class="well">
+    <h2 class="text-center">Best scorers</h2>
+    <ol>
+        <li>aaaaaaaaa</li>
+        <li>bbbbbbbbb</li>
+        <li>ccccccccc</li>
+        <li>ddddddddd</li>
+    </ol>
+  </div>
+</div>
+<% else %>
 <div class="col-md-6">
     <div class="well">
       <h2 class="text-center">Join Us</h2>
       <h4>Sign up and join the Club!</h4>
       <br/>
-      <%= link_to "Join us", "#", class: 'btn btn-custom btn-lg btn-block' %>
+      <%= link_to "Join us", new_user_registration_path, class: 'btn btn-primary btn-lg btn-block' %>
     </div>
 </div>
 
@@ -18,10 +41,10 @@
     <h2 class="text-center">Next game:</h2>
     <p>Address: xxxxxxxxxxxxxxxxxxx</p>
     <p>Time: aa:bb</p>
-    <p>Players: 10</p>
+    <p>Players: 10</p>
     <br/>
-    <%= link_to "Join the game", "#", class: 'btn btn-custom btn-lg btn-block' %>
+    <%= link_to "Join the game", "#", class: 'btn btn-primary btn-lg btn-block' %>
   </div>
 </div>
-
+<% end %>
 </row>

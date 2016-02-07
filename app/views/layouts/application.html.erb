@@ -25,7 +25,11 @@
   
       <div class="collapse navbar-collapse" id="main-nav-collapse">
           <div class="nav navbar-nav navbar-right">
-          <%= link_to "Log In", "#", class: 'btn btn-primary navbar-btn', method: :get %>
+        <% if user_signed_in? %>
+          <%= link_to "Sign Out", destroy_user_session_path, class: 'btn btn-primary navbar-btn', method: :delete %>
+        <% else %>
+          <%= link_to "Log In", new_user_session_path, class: 'btn btn-primary navbar-btn', method: :get %>
+        <% end %>
       </div>
          <ul class="nav navbar-nav navbar-right">
           <li><%= link_to "Games", "#gamess_path"%></li>
