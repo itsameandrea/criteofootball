@@ -1,18 +1,18 @@
 <div class="jumbotron text-center">
     <h1 class="white montserrat">Criteo Football Club</h1>
     <p class="lead white montserrat">Welcome! Join our next game!</p>
-    <p><a class="btn btn-large btn-success" href="http://bootply.com/tagged/bootstrap-3" target="ext">More Examples</a></p>
 </div>
 <row>
 <% if user_signed_in? %>
+
 <div class="col-md-6">
   <div class="well">
     <h2 class="text-center">Next game:</h2>
-    <p>Address: xxxxxxxxxxxxxxxxxxx</p>
-    <p>Time: aa:bb</p>
-    <p>Players: 10</p>
+    <p>Address: <%= @game.address %></p>
+    <p>Time: <%= @game.time %></p>
+    <p>Players: <%= @game.users.length %></p>
     <br/>
-    <%= link_to "Join the game", "#", class: 'btn btn-primary btn-lg btn-block' %>
+    <%= link_to "Join the game", edit_game_path(id: @game.id), class: 'btn btn-primary btn-lg btn-block' %>
   </div>
 </div>
 <div class="col-md-6">

@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   
+  
+  resources :teams
+  
+  resources :games
+  
   devise_for :users
   root 'pages#home'
   

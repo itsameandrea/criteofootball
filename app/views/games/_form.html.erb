@@ -1,0 +1,18 @@
+<%= form_for @game, url: game_path(id: @game.id) do |f| %>
+    
+    <div class="form-group">
+        <p><%= @game.address %></p>
+        <p><%= @game.time %></p>
+    </div>
+    
+    <div class="form-group">
+        <%= f.label :name%>
+        <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    
+    
+    <div class="form-group">
+        <%= f.submit "Join the game", class: 'btn btn-primary'%>
+    </div>
+        
+<% end %>
