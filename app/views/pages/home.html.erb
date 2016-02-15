@@ -11,12 +11,14 @@
 <div class="col-md-6">
   <div class="well">
     <h2 class="text-center">Next game:</h2>
+    <% if @game != nil%>
     <p>Address: <%= @game.address %></p>
     <p>Time: <%= @game.time %></p>
     <p>Players: <%= @game.users.length %></p>
     <br/>
     <%= link_to "Join the game", edit_game_path(id: @game.id), class: 'btn btn-custom btn-lg btn-block' %>
   </div>
+  <% end %>
 </div>
 <div class="col-md-6">
   <div class="well">
