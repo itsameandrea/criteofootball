@@ -1,8 +1,11 @@
+<row>
+<div class="col-md-12">
 <div class="jumbotron text-center">
     <h1 class="white montserrat">Criteo Football Club</h1>
     <p class="lead white montserrat">Welcome! Join our next game!</p>
 </div>
-<row>
+</div>
+
 <% if user_signed_in? %>
 
 <div class="col-md-6">
@@ -12,7 +15,7 @@
     <p>Time: <%= @game.time %></p>
     <p>Players: <%= @game.users.length %></p>
     <br/>
-    <%= link_to "Join the game", edit_game_path(id: @game.id), class: 'btn btn-primary btn-lg btn-block' %>
+    <%= link_to "Join the game", edit_game_path(id: @game.id), class: 'btn btn-custom btn-lg btn-block' %>
   </div>
 </div>
 <div class="col-md-6">
@@ -32,7 +35,7 @@
       <h2 class="text-center">Join Us</h2>
       <h4>Sign up and join the Club!</h4>
       <br/>
-      <%= link_to "Join us", new_user_registration_path, class: 'btn btn-primary btn-lg btn-block' %>
+      <%= link_to "Join us", new_user_registration_path, class: 'btn btn-custom btn-lg btn-block' %>
     </div>
 </div>
 
@@ -43,7 +46,7 @@
     <p>Time: <%= @game.time %></p>
     <p>Players: 10</p>
     <br/>
-    <%= link_to "Join the game", "#", class: 'btn btn-primary btn-lg btn-block' %>
+    <%= link_to "Join the game", "#", class: 'btn btn-custom btn-lg btn-block' %>
   </div>
 </div>
 <% end %>

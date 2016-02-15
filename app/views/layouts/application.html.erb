@@ -7,38 +7,38 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="container-full">
-  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand text-right" href="/" >
+
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav-collapse">
+        <span class="sr-only"> Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      <a class="navbar-brand text-right" href="/" >
           <img alt="Brand" src="http://www.criteo.com/images/criteo-logo.svg" class="navbar-img">
-        </a>
-      </div>
-  
-      <div class="collapse navbar-collapse" id="main-nav-collapse">
-          <div class="nav navbar-nav navbar-right">
+      </a>
+    </div>
+    
+    <div class="collapse navbar-collapse" id="main-nav-collapse">
+      <div class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <%= link_to "Sign Out", destroy_user_session_path, class: 'btn btn-primary navbar-btn', method: :delete %>
+          <%= link_to "Sign Out", destroy_user_session_path, class: 'btn btn-custom navbar-btn', method: :delete %>
         <% else %>
-          <%= link_to "Log In", new_user_session_path, class: 'btn btn-primary navbar-btn', method: :get %>
+          <%= link_to "Log In", new_user_session_path, class: 'btn btn-custom navbar-btn', method: :get %>
         <% end %>
       </div>
-         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "Games", "#gamess_path"%></li>
-          <li><%= link_to "Subscribe to next game", "#new_game_path"%></li>
-        </ul>
-      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <li><%= link_to "Games", games_path %></li>
+        <% end %>  
+      </ul>
     </div>
-  </nav>
-
+  </div>
+</nav>
 
 <div class="container">
   <% flash.each do |key, value| %>
@@ -46,6 +46,7 @@
   <% end %>
   <%= yield %>
 </div>
-</div>
 </body>
+</html>
+
 </html>

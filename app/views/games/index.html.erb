@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <h1>Planned games</h1>
+        <ul class="list-unstyled">
+            <% @games.each do |u| %>
+                    <li>
+                        <div class="well">
+                            <div class="col-bg-4 text-center">
+                                <%= u.name %><br>
+                                <%= u.address %><br>
+                                <%= u.time %><br>
+                            </div>
+                        </div>
+                    </li>
+            <% end %>
+        </ul>
+    </div>
+</div>

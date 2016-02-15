@@ -10,24 +10,31 @@ class GamesController < ApplicationController
       
     end
     
+    def index
+      
+      @games = Game.all
+      
+    end
+    
     def edit
    
         @game = Game.find(params[:id])
     
+  
     end
     
     def update
         @game = Game.find(params[:id])
         puts user_params
-        if (User.where(name: user_params) != nil)
-          puts "Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-          @user = User.where(name: user_params)
+        if (User.where(:name => user_params[:name]) != [])
+          puts "Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa #{user_params[:name]}"
+          @user = User.where(:name => user_params[:name])[0]
         else
-          puts "Bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+          puts "Bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbe #{user_params[:name]}"
           @user = User.new
-          @user.name = user_params
-          @user.email = user_params.to_s.split[0].split("")[0] + "." + user_params.to_s.split[1] + "@criteo.com"
-          @user.password = user_params.to_s.split[0] + user_params.to_s.split[1] + "12345"
+          @user.name = user_params[:name]
+          @user.email = user_params[:address]
+          @user.password = "12345678"
           @user.value = 5
           @user.save
         end
@@ -46,7 +53,7 @@ class GamesController < ApplicationController
     private
     
     def user_params
-      params.require(:game).permit(:name)
+      params.require(:game).permit(:name, :address)
     end
   
     #def only_current_user
@@ -56,3 +63,5 @@ class GamesController < ApplicationController
     
 end
 
+################## Added relation between games and users
+################# Users can now join a game
