@@ -38,8 +38,15 @@ class GamesController < ApplicationController
           @user.value = 5
           @user.save
         end
+
         @game.users << @user
+        name = @user.name
+        address = @game.address
+        time = @game.time
+        email = @user.email
+
         if @game.save
+            GameMailer.game_email(name, address, time, email).deliver
             flash[:success] = "Profile Updated!"
             redirect_to game_path(id: @game.id)
         else
