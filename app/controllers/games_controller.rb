@@ -36,7 +36,9 @@ class GamesController < ApplicationController
           @user.email = user_params[:address]
           @user.password = "12345678"
           @user.value = 5
-          @user.save
+          if @user.save
+            GameMailer.user_email(@user.name, @user.email, "12345678")
+          end
         end
 
         @game.users << @user

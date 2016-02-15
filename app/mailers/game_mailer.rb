@@ -7,4 +7,11 @@ class GameMailer < ActionMailer::Base
     @time = time
     mail(to: email, from: "andrea.rocca3@gmail.com", subject: 'Criteo Game Subscription')
   end
+  
+  def user_email(name, email, password)
+      
+      @name = name
+      @email = email
+      
+  end
 end
