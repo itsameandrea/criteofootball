@@ -43,12 +43,14 @@
 
 <div class="col-md-6">
   <div class="well">
+    <% if @game != nil%>
     <h2 class="text-center">Next game:</h2>
     <p>Address: <%= @game.address %></p>
     <p>Time: <%= @game.time %></p>
     <p>Players: 10</p>
     <br/>
     <%= link_to "Join the game", "#", class: 'btn btn-custom btn-lg btn-block' %>
+    <%end%>
   </div>
 </div>
 <% end %>
