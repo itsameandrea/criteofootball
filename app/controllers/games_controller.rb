@@ -26,9 +26,9 @@ class GamesController < ApplicationController
     def update
         @game = Game.find(params[:id])
         puts user_params
-        if (User.where(:name => user_params[:name]) != [])
+        if (User.where(:name => user_params[:email]) != [])
           puts "Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa #{user_params[:name]}"
-          @user = User.where(:name => user_params[:name])[0]
+          @user = User.where(:name => user_params[:email])[0]
         else
           puts "Bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbe #{user_params[:name]}"
           @user = User.new
