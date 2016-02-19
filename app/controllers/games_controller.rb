@@ -27,10 +27,10 @@ class GamesController < ApplicationController
         @game = Game.find(params[:id])
         puts user_params
         if (User.where(:name => user_params[:email]) != [])
-          puts "Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa #{user_params[:name]}"
+          puts "Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa #{user_params[:email]}"
           @user = User.where(:name => user_params[:email])[0]
         else
-          puts "Bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbe #{user_params[:name]}"
+          puts "Bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbe #{user_params[:email]}"
           @user = User.new
           @user.name = user_params[:name]
           @user.email = user_params[:address]
