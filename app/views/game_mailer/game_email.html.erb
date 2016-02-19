@@ -1,11 +1,10 @@
-####app/views/game_mailer/game_email.html.erb
 <!DOCTYPE html>
 <html>
   <head>
   </head>
   <body>
     <h1>Hey <%= " #{@name}" %></h1>
-    <p>You subscribed to the last Criteo game that is @ <%= "#{ @address }, on the #{ @time }." %></p>
+    <p>You subscribed to the last Criteo game that is @ <%= "#{ @address }, on the #{ @name }. h#{ @time }" %></p>
     <p><%= @body %></p>
   </body>
 </html>

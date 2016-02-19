@@ -7,6 +7,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       resource.role_id = Role.where(:name => user_params[:role_id])[0].id
       resource.value = 5
       resource.save
+      GameMailer.user_email(resource.name, resource.email, resource.password)
     end
   end
   
