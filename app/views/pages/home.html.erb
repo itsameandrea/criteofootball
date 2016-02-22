@@ -26,10 +26,11 @@
   <div class="well">
     <h2 class="text-center">Best scorers</h2>
     <ol>
-        <li>aaaaaaaaa</li>
-        <li>bbbbbbbbb</li>
-        <li>ccccccccc</li>
-        <li>ddddddddd</li>
+      <% if @users != []%>
+        <% @users.sort_by { |u| u[:goal] }.reverse!.each do |x|%>
+          <li><%= x.name + " - " + x.goal.to_s%></li>
+        <%end%>
+      <%end%>
     </ol>
   </div>
 </div>

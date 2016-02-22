@@ -2,6 +2,24 @@
 class GamesController < ApplicationController
     
     before_action :authenticate_user!
+    
+    def new
+      
+      @game = Game.new
+      
+    end
+    
+    def create
+      
+      @game = Game.new(game_params)
+      if @game.save
+        flash[:success] = "Game created!"
+        redirect_to game_path(:id => @game.id )
+      else
+        render action: :new
+      end
+      
+    end
 
     def show
       
@@ -38,6 +56,8 @@ class GamesController < ApplicationController
           @user.value = 5
           if @user.save
             GameMailer.user_email(@user.name, @user.email, "12345678")
+          else
+            #there was an error while creating the user#
           end
         end
 
@@ -64,13 +84,13 @@ class GamesController < ApplicationController
     def user_params
       params.require(:game).permit(:name, :address)
     end
-  
+    
+    def game_params
+      params.require(:game).permit(:name, :address, :time)
+    end
     #def only_current_user
     #  @user = User.find( params[:user_id] )
     #  redirect_to(root_url) unless @user == current_user
     #end
     
 end
-
-################## Added relation between games and users
-################# Users can now join a game
