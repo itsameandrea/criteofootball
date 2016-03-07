@@ -55,7 +55,7 @@ class GamesController < ApplicationController
           @user.password = "12345678"
           @user.value = 5
           if @user.save
-            GameMailer.user_email(@user.name, @user.email, "12345678")
+            GameMailer.user_email(@user.name, @user.email, "12345678").deliver
           else
             #there was an error while creating the user#
           end
