@@ -9,7 +9,7 @@ namespace :weekly_games do
     @game.address = "Club Natacio Barceloneta"
     @game.time = "18:30"
     
-    User.each do |u|
+    User.all.each do |u|
       
       emails.push(u.email)
       
