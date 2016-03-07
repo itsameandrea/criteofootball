@@ -16,7 +16,7 @@ namespace :weekly_games do
     end
     
     if @game.save 
-      GameMailer.weekly_game_email(@game.name, @game.address, @game.time, emails)
+      GameMailer.weekly_game_email(@game.name, @game.address, @game.time, emails).deliver
     end
     
   end
