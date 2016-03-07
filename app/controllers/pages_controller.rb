@@ -8,6 +8,7 @@ class PagesController < ApplicationController
         
         @game = Game.last
         @users = User.all
+        @user = current_user
         
     end
     
