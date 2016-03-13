@@ -2,12 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.co
 
+@font-face {
+  font-family: 'Hurme Design';
+  src: url('Hurme Design - HurmeGeometricSans3 Regular.otf');
+
+}
 
 
-html *
-{
+html * {
    
-   font-family: "Hurme Design";
+   font-family: "Hurme Design" !important;
 }
 
 body {
