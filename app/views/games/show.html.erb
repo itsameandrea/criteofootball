@@ -16,7 +16,7 @@
             <td><%= u.name %></td>
             <td><%= u.email %></td>
             <% if u.email == current_user.email%>
-                <td><%= link_to "Not feel like playing?",  game_useroptout_path(game_id: params[:id], user:u.id), data: { confirm: "Are you sure?" }, class: 'btn btn-danger' %></td>
+                <td><%= link_to "Don't feel like playing?",  game_useroptout_path(game_id: params[:id], user:u.id), data: { confirm: "Are you sure?" }, class: 'btn btn-danger' %></td>
             <% end %>
           </tr>
         <% end %>

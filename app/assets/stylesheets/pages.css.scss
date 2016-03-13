@@ -25,6 +25,18 @@ body {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ef8d3b',endColorstr='#f9c657',GradientType=1);
 }
 
+.text-center.custom-h{
+    
+    position: relative;
+    bottom: 70px;
+    font-size: 50px;
+}
+
+.col-md-12.no-padding{
+    
+    padding: 0;
+}
+
 .button-custom {
     background: #ef8d3b;
     background: -moz-linear-gradient(left,#ef8d3b 0%,#f9c657 100%);

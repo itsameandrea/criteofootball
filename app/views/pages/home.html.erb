@@ -1,25 +1,28 @@
 
 <row>
-<div class="col-md-12">
+<div class="col-md-12 no-padding">
 <div class="jumbotron text-center">
+  <container></container>
     <h1 class="white montserrat">Criteo Football Club</h1>
     <p class="lead white montserrat">Welcome! Join our next game!</p>
+  </container>
 </div>
 </div>
 
+<container>
 <% if user_signed_in? %>
 
 
 <div class="col-md-6">
   <div class="well">
-    <h2 class="text-center">Next game:</h2>
+    <h2 class="text-center custom-h">Next game:</h2>
     <% if @game != nil%>
     <p>Address: <%= @game.address %></p>
-    <p>Date: <%= @game.name %> h <%= @game.time %></p>
+    <p>Date: <%= @game.name %> h<%= @game.time %></p>
     <p>Players: <%= @game.users.uniq.length %></p>
     <br/>
     <%if @game.users.include? current_user%>
-      <%= link_to "Not feel like playing?",  game_useroptout_path(game_id: @game.id, user:current_user.id), data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-block' %>
+      <%= link_to "Don't feel like playing?",  game_useroptout_path(game_id: @game.id, user:current_user.id), data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-block' %>
     <% else %>
       <%= link_to "Join the game", game_useroptin_path(game_id: @game.id, user:current_user.id), data: { confirm: "Are you sure?" }, class: 'btn btn-custom btn-lg btn-block' %>
     <% end %>
@@ -30,7 +33,7 @@
 </div>
 <div class="col-md-6">
   <div class="well">
-    <h2 class="text-center">Best scorers</h2>
+    <h2 class="text-center custom-h">Best scorers</h2>
     <ol>
       <% if @users != []%>
         <% @users.sort_by { |u| u[:goal] }.reverse!.each_with_index do |x, i|%>
@@ -51,6 +54,6 @@
       <%= link_to "Join us", new_user_registration_path, class: 'btn btn-custom btn-lg btn-block' %>
     </div>
 </div>
-
+</container>
 <% end %>
 </row>
