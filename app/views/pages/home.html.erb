@@ -15,7 +15,7 @@
     <h2 class="text-center">Next game:</h2>
     <% if @game != nil%>
     <p>Address: <%= @game.address %></p>
-    <p>Time: <%= @game.time %></p>
+    <p>Date: <%= @game.name %> h <%= @game.time %></p>
     <p>Players: <%= @game.users.uniq.length %></p>
     <br/>
     <%if @game.users.include? current_user%>
