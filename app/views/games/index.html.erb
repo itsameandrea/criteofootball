@@ -1,18 +1,37 @@
-<div class="row">
-    <div class="col-md-8 col-md-offset-2">
-        <h1>Planned games</h1>
-        <ul class="list-unstyled">
-            <% @games.each do |u| %>
-                    <li>
-                        <div class="well">
-                            <div class="col-bg-4 text-center">
-                                <%= u.name %><br>
-                                <%= u.address %><br>
-                                <%= u.time %><br>
-                            </div>
-                        </div>
-                    </li>
+<h1>Planned games</h1>
+ 
+<table class="table well">
+    <thead class="thead-inverse">
+        <tr>
+            <th>Date</th>
+            <th>Address</th>
+            <th>Time</th>
+            
+            <% if current_user.email == "andrea.rocca3@gmail.com" %>
+                <th></th>
+                <th></th>
+                <th></th>
             <% end %>
-        </ul>
-    </div>
-</div>
+        </tr>
+    </thead>
+    <tbody>
+        <% @games.each do |game| %>
+          <tr>
+            <% @date = Date.parse game.name%>
+            <% if Time.now < @date %>
+                <td><%= game.name %></td>
+                <td><%= game.address %></td>
+                <td><%= game.time %></td>
+                <% if current_user.email == "andrea.rocca3@gmail.com" %>
+                    <td><%= link_to "Show", game, class: 'btn btn-primary' %></td>
+                    <td><%= link_to "Edit", edit_game_path(game), class: 'btn btn-info' %></td>
+                    <td><%= link_to "Remove", game, method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger' %></td>
+                <% end %>
+            <% end %>
+          </tr>
+        <% end %>
+    </tbody>
+</table>
+ 
+<br>
+ 

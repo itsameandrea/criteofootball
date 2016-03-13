@@ -11,6 +11,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
   
+
+  
   private
     
     def user_params

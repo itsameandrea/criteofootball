@@ -16,9 +16,9 @@
     <% if @game != nil%>
     <p>Address: <%= @game.address %></p>
     <p>Time: <%= @game.time %></p>
-    <p>Players: <%= @game.users.length %></p>
+    <p>Players: <%= @game.users.uniq.length %></p>
     <br/>
-    <%= link_to "Join the game", edit_game_path(id: @game.id), class: 'btn btn-custom btn-lg btn-block' %>
+    <%= link_to "Join the game", game_useroptin_path(game_id: @game.id, user:current_user.id), data: { confirm: "Are you sure?" }, class: 'btn btn-custom btn-lg btn-block' %>
     <%= link_to "Check who's playing", game_path(id: @game.id), class: 'btn btn-custom btn-lg btn-block' %>
 
   </div>
@@ -29,8 +29,10 @@
     <h2 class="text-center">Best scorers</h2>
     <ol>
       <% if @users != []%>
-        <% @users.sort_by { |u| u[:goal] }.reverse!.each do |x|%>
-          <li><%= x.name + " - " + x.goal.to_s%></li>
+        <% @users.sort_by { |u| u[:goal] }.reverse!.each_with_index do |x, i|%>
+          <% if x.goal > 0 && i< 5%>
+            <li><%= x.name + " - " + x.goal.to_s%></li>
+          <% end %>
         <%end%>
       <%end%>
     </ol>

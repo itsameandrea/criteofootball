@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
     
-    before_action :authenticate_user!
+    #before_action :authenticate_user!
     before_filter :just_admin, only: :dashboard
 
     

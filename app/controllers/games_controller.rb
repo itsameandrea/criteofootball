@@ -2,6 +2,7 @@
 class GamesController < ApplicationController
     
     before_action :authenticate_user!
+    before_action :only_admin, :except => [:show, :useroptout, :useroptin]
     
     def new
       
@@ -14,7 +15,7 @@ class GamesController < ApplicationController
       @game = Game.new(game_params)
       if @game.save
         flash[:success] = "Game created!"
-        redirect_to game_path(:id => @game.id )
+        redirect_to dashboard_path
       else
         render action: :new
       end
@@ -23,60 +24,75 @@ class GamesController < ApplicationController
 
     def show
       
-        @game = Game.find(params[:id])
+        game = Game.find(params[:id])
+        
+        @players = game.users.uniq
 
       
+    end
+    
+    def destroy
+      @game = Game.find(params[:id])
+      @game.destroy
+      respond_to do |format|
+        format.html { redirect_to games_url, notice: 'User was successfully deleted.' }
+      end
     end
     
     def index
       
       @games = Game.all
       
+      
     end
     
     def edit
    
         @game = Game.find(params[:id])
-    
   
+    end
+    
+    def useroptout
+      
+      @game = Game.find(params[:game_id])
+      
+      if params[:user]
+          @game.users.delete(User.find(params[:user]))
+          flash[:success] = "Hope to see you next time!"
+          #GameMailer.optout_user_email(User.find(params[:user]).name)
+          redirect_to root_path
+      end
+      
+    end
+    
+    def useroptin
+      
+      @game = Game.find(params[:game_id])
+      @user = User.find(params[:user])
+      @game.users << @user
+      
+      name = @user.name
+      address = @game.address
+      time = @game.time
+      email = @user.email
+
+      if @game.save
+        GameMailer.game_email(name, address, time, email).deliver
+        flash[:success] = "Thanks for joining!"
+        redirect_to root_path
+      end
+      
     end
     
     def update
         @game = Game.find(params[:id])
-        puts user_params
-        if (User.where(:email => user_params[:address]) != [])
-          puts "Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa #{user_params[:address]}"
-          @user = User.where(:email => user_params[:address])[0]
-        else
-          puts "Bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbe #{user_params[:address]}"
-          @user = User.new
-          @user.name = user_params[:name]
-          @user.email = user_params[:address]
-          @user.password = "12345678"
-          @user.value = 5
-          if @user.save
-            GameMailer.user_email(@user.name, @user.email, "12345678").deliver
-          else
-            #there was an error while creating the user#
-          end
-        end
-
-        @game.users << @user
-        name = @user.name
-        address = @game.address
-        time = @game.time
-        email = @user.email
-
-        if @game.save
-            GameMailer.game_email(name, address, time, email).deliver
-            flash[:success] = "Profile Updated!"
-            redirect_to game_path(id: @game.id)
-        else
-          
-          render action: :edit
         
+        if @game.update(game_params)
+          flash[:success] = "Game Updated!"
+          redirect_to dashboard_path
+        else
+          render action :edit
         end
-        
     end
   
     private
@@ -87,6 +103,11 @@ class GamesController < ApplicationController
     
     def game_params
       params.require(:game).permit(:name, :address, :time)
+    end
+    
+    def only_admin
+      
+      redirect_to(root_url) unless current_user.email == "andrea.rocca3@gmail.com"
     end
     #def only_current_user
     #  @user = User.find( params[:user_id] )

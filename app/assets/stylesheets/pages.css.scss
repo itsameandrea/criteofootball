@@ -1,6 +1,18 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.co
+
+@font-face {
+  font-family: "Hurme Design";
+  src: font-url(Hurme Design - HurmeGeometricSans3 Regular);
+}
+
+html *
+{
+   
+   font-family: "Hurme Design";
+}
+
 body {
     background: #ef8d3b;
     background: -moz-linear-gradient(left,#ef8d3b 0%,#f9c657 100%);

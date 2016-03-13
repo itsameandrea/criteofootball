@@ -5,7 +5,7 @@ class GameMailer < ActionMailer::Base
     @name = name
     @address = address
     @time = time
-    mail(to: email, from: "a.rocca@criteo.com", subject: 'Criteo Game Subscription')
+    mail(to: email, from: "a.rocca@criteo.com", subject: '[WEEKLY FOOTBALL] - Game Subscription')
   end
   
   def weekly_game_email(date, address, time, emails)
@@ -23,4 +23,10 @@ class GameMailer < ActionMailer::Base
       mail(to: email, from: "a.rocca@criteo.com", subject: "Criteo Football - Account Created")
       
   end
+  
+  def optout_user_email (name, email)
+    @name = name
+    
+    mail(to: email, from "a.rocca@criteo.com"), subject: "Criteo Football - Opt-out Confirmation"
+  end 
 end

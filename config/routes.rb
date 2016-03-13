@@ -3,11 +3,19 @@ Rails.application.routes.draw do
   
   resources :teams
   
-  resources :games
+  resources :games do
+    
+    get :useroptout
+    
+    get :useroptin
+  end
   
   devise_for :users, controllers: { registrations: 'users/registrations' }
   
+  resources :users
+  
   get '/dashboard' => 'pages#dashboard'
+  
   root 'pages#home'
   
   # The priority is based upon order of creation: first created -> highest priority.

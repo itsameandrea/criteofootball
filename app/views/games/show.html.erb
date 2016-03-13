@@ -1,9 +1,26 @@
-<div class="row">
-    <div class="col-md-6 col-md-offset-3 well">
-        <% @game.users.each_with_index do |u, index| %>
+<h1>Next game</h1>
+ 
+<table class="table well">
+    <thead class="thead-inverse">
+        <tr>
+            <th>No.</th>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
         
-        <%= index.to_s + " - " + u.name %> <br>
-        
+        <% @players.each_with_index do |u, index| %>
+          <tr>
+            <td><%= index+1 %></td>
+            <td><%= u.name %></td>
+            <td><%= u.email %></td>
+            <% if u.email == current_user.email%>
+                <td><%= link_to "Not feel like playing?",  game_useroptout_path(game_id: params[:id], user:u.id), data: { confirm: "Are you sure?" }, class: 'btn btn-danger' %></td>
+            <% end %>
+          </tr>
         <% end %>
-    </div>
-</div>
+    </tbody>
+</table>
+ 
+<br>

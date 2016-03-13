@@ -1,0 +1,30 @@
+<h1>Listing Users</h1>
+ 
+<table class="table">
+    <thead class="thead-inverse">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Goals</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.goal %></td>
+            <td><%= link_to "Show", user, class: 'btn btn-primary' %></td>
+            <td><%= link_to "Edit", edit_user_path(user), class: 'btn btn-info' %></td>
+            <td><%= link_to "Remove", user, method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger' %></td>
+          </tr>
+        <% end %>
+    </tbody>
+</table>
+ 
+<br>
+ 
+<%= link_to "New user", new_user_path %>
