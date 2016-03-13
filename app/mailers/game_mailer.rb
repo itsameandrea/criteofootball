@@ -27,6 +27,6 @@ class GameMailer < ActionMailer::Base
   def optout_user_email (name, email)
     @name = name
     
-    mail(to: email, from "a.rocca@criteo.com", subject: "Criteo Football - Opt-out Confirmation")
+    mail(to: email, from: "a.rocca@criteo.com", subject: "Criteo Football - Opt-out Confirmation")
   end 
 end
