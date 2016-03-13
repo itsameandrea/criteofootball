@@ -18,7 +18,11 @@
     <p>Time: <%= @game.time %></p>
     <p>Players: <%= @game.users.uniq.length %></p>
     <br/>
-    <%= link_to "Join the game", game_useroptin_path(game_id: @game.id, user:current_user.id), data: { confirm: "Are you sure?" }, class: 'btn btn-custom btn-lg btn-block' %>
+    <%if @game.users.include? current_user%>
+      <%= link_to "Not feel like playing?",  game_useroptout_path(game_id: @game.id, user:current_user.id), data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-block' %>
+    <% else %>
+      <%= link_to "Join the game", game_useroptin_path(game_id: @game.id, user:current_user.id), data: { confirm: "Are you sure?" }, class: 'btn btn-custom btn-lg btn-block' %>
+    <% end %>
     <%= link_to "Check who's playing", game_path(id: @game.id), class: 'btn btn-custom btn-lg btn-block' %>
 
   </div>
