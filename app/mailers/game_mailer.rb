@@ -8,10 +8,11 @@ class GameMailer < ActionMailer::Base
     mail(to: email, from: "a.rocca@criteo.com", subject: '[WEEKLY FOOTBALL] - Game Subscription')
   end
   
-  def weekly_game_email(date, address, time, emails)
+  def weekly_game_email(date, address, time, emails, date)
     @date = date
     @address = address
     @time = time
+    @date = date
     
     mail(to: emails, from: "a.rocca@criteo.com", subject: "[WEEKLY FOOTBALL] New Game Created")
   end
