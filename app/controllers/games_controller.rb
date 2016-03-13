@@ -59,7 +59,7 @@ class GamesController < ApplicationController
       if params[:user]
           @game.users.delete(User.find(params[:user]))
           flash[:success] = "Hope to see you next time!"
-          #GameMailer.optout_user_email(User.find(params[:user]).name)
+          GameMailer.optout_user_email(User.find(params[:user]).name, User.find(params[:user]).email)
           redirect_to root_path
       end
       
