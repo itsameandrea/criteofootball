@@ -15,30 +15,35 @@
 
 <div class="col-md-6">
   <div class="well">
-    <h2 class="text-center custom-h">Next game:</h2>
+    <h2 class="text-center custom-h">NEXT GAME:</h2>
     <% if @game != nil%>
-    <p>Address: <%= @game.address %></p>
-    <p>Date: <%= @game.name %> h<%= @game.time %></p>
-    <p>Players: <%= @game.users.uniq.length %></p>
+    <p class="move-top">Address: <%= @game.address %></p>
+    <p class="move-top">Date: <%= @game.name %> h<%= @game.time %></p>
+    <p class="move-top">Players: <%= @game.users.uniq.length %></p>
     <br/>
     <%if @game.users.include? current_user%>
-      <%= link_to "Don't feel like playing?",  game_useroptout_path(game_id: @game.id, user:current_user.id), data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-block' %>
+      <div class="col-md-6 move-top">
+        <%= link_to "Don't feel like playing?",  game_useroptout_path(game_id: @game.id, user:current_user.id), data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-lg btn-block' %>
+      </div>
     <% else %>
-      <%= link_to "Join the game", game_useroptin_path(game_id: @game.id, user:current_user.id), data: { confirm: "Are you sure?" }, class: 'btn btn-custom btn-lg btn-block' %>
+      <div class="col-md-6 move-top">
+        <%= link_to "Join the game", game_useroptin_path(game_id: @game.id, user:current_user.id), data: { confirm: "Are you sure?" }, class: 'btn btn-custom btn-lg btn-block' %>
+      </div>
     <% end %>
-    <%= link_to "Check who's playing", game_path(id: @game.id), class: 'btn btn-custom btn-lg btn-block' %>
-
+    <div class="col-md-6 move-top">
+      <%= link_to "Check who's playing", game_path(id: @game.id), class: 'btn btn-custom btn-lg btn-block' %>
+    </div>
   </div>
   <% end %>
 </div>
 <div class="col-md-6">
   <div class="well">
-    <h2 class="text-center custom-h">Best scorers</h2>
+    <h2 class="text-center custom-h">TOP SCORERS</h2>
     <ol>
       <% if @users != []%>
         <% @users.sort_by { |u| u[:goal] }.reverse!.each_with_index do |x, i|%>
           <% if x.goal > 0 && i< 5%>
-            <li><%= x.name + " - " + x.goal.to_s%></li>
+            <li class="move-top"><%= x.name + " - " + x.goal.to_s%></li>
           <% end %>
         <%end%>
       <%end%>

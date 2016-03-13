@@ -25,6 +25,17 @@ body {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ef8d3b',endColorstr='#f9c657',GradientType=1);
 }
 
+.move-top{
+    
+    position: relative;
+    bottom: 50px;
+}
+
+.btn-danger{
+    
+    font-size: 18px !important;
+}
+
 .text-center.custom-h{
     
     position: relative;
