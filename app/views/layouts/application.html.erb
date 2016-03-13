@@ -32,11 +32,6 @@
           <%= link_to "Log In", new_user_session_path, class: 'btn btn-custom navbar-btn', method: :get %>
         <% end %>
       </div>
-      <ul class="nav navbar-nav navbar-right">
-        <% if user_signed_in? %>
-          <li><%= link_to "Games", games_path %></li>
-        <% end %>  
-      </ul>
     </div>
   </div>
 </nav>
