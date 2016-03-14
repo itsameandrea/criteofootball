@@ -13,7 +13,10 @@ class GamesController < ApplicationController
     def create
       
       @game = Game.new(game_params)
+      
+      
       if @game.save
+        
         flash[:success] = "Game created!"
         redirect_to dashboard_path
       else
@@ -86,6 +89,7 @@ class GamesController < ApplicationController
     end
     
     def update
+      
         @game = Game.find(params[:id])
         
         if @game.update(game_params)
@@ -98,12 +102,16 @@ class GamesController < ApplicationController
   
     private
     
+    def mail_params
+      params.permit(:send_mail)
+    end
+    
     def user_params
       params.require(:game).permit(:name, :address)
     end
     
     def game_params
-      params.require(:game).permit(:name, :address, :time)
+      params.require(:game).permit(:name, :address, :time, :send_mail)
     end
     
     def only_admin
