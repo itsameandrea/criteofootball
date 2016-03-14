@@ -8,7 +8,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       resource.value = 5
       resource.goal = 0
       resource.save
-      GameMailer.user_email(resource.name, resource.email, resource.password)
+      UserMailer.user_email(resource.name, resource.email, resource.password).deliver
     end
   end
   
