@@ -38,7 +38,7 @@ class UsersController < ApplicationController
     @user.goal = 0
     @user.password = "criteo123"
     if @user.save
-      GameMailer.user_email(@user.name, @user.email, @user.password).deliver
+      UserMailer.user_email(@user.name, @user.email, @user.password).deliver
     end
   end
 
