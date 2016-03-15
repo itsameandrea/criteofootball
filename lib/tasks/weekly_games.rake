@@ -2,7 +2,7 @@ namespace :weekly_games do
   desc "Create new game every Monday and sends the invite"
   task create_game: :environment do
     
-    if Time.now.day.monday?
+    if Time.now.strftime("%A") == "Monday"
     
       day = Time.now.day + 2
       emails = []
