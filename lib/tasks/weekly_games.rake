@@ -4,12 +4,12 @@ namespace :weekly_games do
     
     if Time.now.strftime("%A") == "Monday"
     
-      day = Time.now.day + 2
+      day = Time.now.day + 4
       emails = []
       @game = Game.new
-      @game.name = "Wednesday #{day} March"
+      @game.name = "Friday #{day} March"
       @game.address = "Club Natacio Barceloneta"
-      @game.time = "18:30"
+      @game.time = "19:00"
       
       User.all.each do |u|
         
