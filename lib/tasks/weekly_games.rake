@@ -7,7 +7,7 @@ namespace :weekly_games do
       day = Time.now.day + 4
       emails = []
       @game = Game.new
-      @game.name = "Friday #{day} March"
+      @game.name = "Friday #{day} April"
       @game.address = "Club Natacio Barceloneta"
       @game.time = "19:00"
       
