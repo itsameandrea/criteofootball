@@ -14,11 +14,19 @@ class GamesController < ApplicationController
       
       @game = Game.new(game_params)
       
+      emails = []
       
       if @game.save
         
         flash[:success] = "Game created!"
         redirect_to dashboard_path
+        User.all.each do |u|
+        
+          emails.push(u.email)
+        
+        end
+        GameMailer.weekly_game_email(@game.name, @game.address, @game.time, emails).deliver
+      
       else
         render action: :new
       end
